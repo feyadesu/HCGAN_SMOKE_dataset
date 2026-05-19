@@ -27,10 +27,5 @@ This dataset can be used to:
 If you use this dataset, please cite:
 
 ```bibtex
-@article{yourpaper2026,
-  title={Unpaired Image-to-Image Translation for Paired Hazy Image Synthesis},
-  author={Your Name et al.},
-  journal={IEEE Transactions on Image Processing},
-  year={2026},
-  note={Preprint available on GitHub: https://github.com/feyadesu/HCGAN_SMOKE_dataset}
+@article{
 }
