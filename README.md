@@ -1,23 +1,55 @@
-# HCGAN dataset release
+# HCGAN: Forest-Fire Smoke Datasets
 
-Forest smoke synthesis data associated with HCGAN.
+This repository provides the datasets used in our accepted paper on generating clear–smoke pseudo-pairs from unpaired forest imagery using HCGAN.
 
-Download the ZIP files from this repository's **Releases** page, not the automatically generated Source code archives.
+The release includes unpaired images for smoke synthesis training, synthetic pairs for supervised restoration, and the Fo-Haze test set.
 
-| Archive | Contents |
-|---|---|
-| SMOKE_unpaired_training.zip | 1,888 clear images and 2,103 real smoke images for unpaired generator training |
-| HCGAN_training_pairs.zip | 1,888 synthetic smoke/source pairs: 1,844 train pairs and 44 validation pairs |
-| Fo_Haze_test_200.zip | 200 synthetic smoke/source test pairs from held-out videos 1 and 2 |
+## Download
 
-## Protocol
-Generator training uses FLAME2 source videos 3–6. The downstream restoration split uses videos 3–5 for training and video 6 for validation. Fo-Haze refers to the held-out test set: 53 pairs from video 1 and 147 from video 2. Training pairs are supplied separately and are not additional Fo-Haze test samples.
+| Dataset | Contents | Download |
+|---|---|---|
+| SMOKE unpaired training data | 1,888 clear images and 2,103 real smoke images | [Download ZIP](https://github.com/feyadesu/HCGAN_SMOKE_dataset/releases/download/v1.0.0/SMOKE_unpaired_training.zip) |
+| HCGAN training pairs | 1,888 synthetic smoke/source pairs: 1,844 training pairs and 44 validation pairs | [Download ZIP](https://github.com/feyadesu/HCGAN_SMOKE_dataset/releases/download/v1.0.0/HCGAN_training_pairs.zip) |
+| Fo-Haze test set | 200 synthetic smoke/source pairs from held-out videos | [Download ZIP](https://github.com/feyadesu/HCGAN_SMOKE_dataset/releases/download/v1.0.0/Fo_Haze_test_200.zip) |
 
-Synthetic smoke images are generated; their references are the corresponding source images, not independently captured smoke-free counterparts of real smoke observations. The 200 test frames come from two videos, not 200 independent scenes.
+The datasets are provided as attachments on the [Releases page](https://github.com/feyadesu/HCGAN_SMOKE_dataset/releases/tag/v1.0.0). The automatically generated “Source code” archives do not contain the image datasets.
 
-Extract each ZIP into its own directory. Each archive includes a manifest with relative file paths and SHA-256 checksums. Match files using the manifest (extensions may differ between synthetic images and references). SHA256SUMS.txt contains archive checksums.
+Archive checksums are available in [SHA256SUMS.txt](SHA256SUMS.txt).
 
-## Source attribution and reuse
-Source imagery is derived from FLAME2. Original data rights and attribution requirements remain applicable. This package does not grant a new license over third-party imagery. Before public redistribution, the releasing authors should supply the original FLAME2 source URL, its applicable license/redistribution terms, and the accepted paper's citation. No blanket MIT license is assigned to the images.
+## Dataset Construction and Splits
 
-This release excludes old random-frame test splits, Corsican augmentation data, comparison-method outputs, model weights, and local experiment logs.
+### Unpaired generator training
+
+HCGAN is trained using 1,888 clear images and 2,103 real smoke images from FLAME2 source videos 3–6. The two image domains are unpaired.
+
+### Supervised restoration pairs
+
+Each synthetic training pair consists of an HCGAN-generated smoke image and its corresponding clear source image.
+
+The 1,888 pairs are divided by source video for downstream restoration experiments:
+
+- Training: 1,844 pairs from videos 3–5.
+- Validation: 44 pairs from video 6.
+
+### Fo-Haze test set
+
+Fo-Haze contains 200 test pairs constructed from held-out source videos:
+
+- Video 1: 53 pairs.
+- Video 2: 147 pairs.
+
+The generator-training and Fo-Haze test partitions do not share source videos. Fo-Haze refers specifically to these 200 test pairs; the 1,888 training and validation pairs are provided separately.
+
+The smoke images in these pairs are synthetic, and their references are the corresponding clear source images. They are not independently captured clear–real-smoke pairs. The test set contains frames from two videos rather than 200 independent scenes.
+
+## File Organization
+
+Extract each archive into a separate directory.
+
+### SMOKE_unpaired_training.zip
+
+```text
+train/
+├── clear/
+└── real_smoke/
+manifest.csv
