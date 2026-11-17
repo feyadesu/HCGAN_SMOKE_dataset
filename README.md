@@ -53,3 +53,49 @@ train/
 ├── clear/
 └── real_smoke/
 manifest.csv
+### HCGAN_training_pairs.zip
+
+```text
+train/
+├── hazy/
+└── gt/
+val/
+├── hazy/
+└── gt/
+manifest.csv
+```
+
+### Fo_Haze_test_200.zip
+
+```text
+test/
+├── hazy/
+└── gt/
+manifest.csv
+```
+
+`hazy` contains synthetic smoke images, and `gt` contains the corresponding clear source images.
+
+Each archive includes a manifest with relative file paths and SHA-256 checksums. Use the manifest to match image pairs, as file extensions may differ between synthetic images and their references.
+
+## Intended Use
+
+The datasets support research on:
+
+- Unpaired forest-fire smoke image synthesis.
+- Supervised image restoration using synthetic clear–smoke pairs.
+- Full-reference restoration evaluation on the Fo-Haze synthetic test set.
+
+## Source Attribution and Reuse
+
+The source imagery is derived from FLAME2. We acknowledge the creators of FLAME2 for providing the original data.
+
+Rights and attribution requirements associated with the original imagery remain applicable. This repository does not assign a new license to third-party source imagery. Public availability of these files should not be interpreted as permission for unrestricted reuse.
+
+## Scope
+
+This repository provides datasets only; model weights and implementation code are not included.
+
+## Contact
+
+For questions about the dataset, please [open an issue](https://github.com/feyadesu/HCGAN_SMOKE_dataset/issues).
